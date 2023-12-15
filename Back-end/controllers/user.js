@@ -8,7 +8,7 @@ dotenv.config();
 
 const premiumPage = (req,res) =>{
     console.log(req.headers.authorization)
-    const id = jwt.verify(req.headers.authorization, 'SECRETKEY')
+    const id = jwt.verify(req.headers.authorization, process.env.TOKEN_SECRET)
     console.log("hello premium"+id)
     User.findByPk(id).then((result) => {
         console.log(result)
@@ -41,7 +41,7 @@ const mainPage = (req,res,next) => {
 }
 
 function generateAccessToken(id) {
-    return jwt.sign(id ,'SECRETKEY');
+    return jwt.sign(id ,process.env.TOKEN_SECRET);
 }
 
 const login = (req, res) => {

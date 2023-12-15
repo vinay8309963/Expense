@@ -10,7 +10,7 @@ const sib = require('sib-api-v3-sdk');
 const client = sib.ApiClient.instance
 const apiKey = client.authentications['api-key'];
 
-apiKey.apiKey = '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';
+apiKey.apiKey = process.env.API_KEY
 const tranEmailApi = new sib.TransactionalEmailsApi();
 
 const forgotpassword = async (req, res) => {

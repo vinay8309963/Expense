@@ -38,7 +38,7 @@ const addexpense = async (req, res) => {
 
 const getexpenses = (req, res) => {
     const token = req.header('authorization');
-    const userid = Number(jwt.verify(token, 'SECRETKEY'));
+    const userid = Number(jwt.verify(token, process.env.TOKEN_SECRET));
     Expense.findAll({where : { userId: userid}}).then(expenses => {
         console.log('hello expenses')
         console.log(expenses)

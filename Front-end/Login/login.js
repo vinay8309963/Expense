@@ -12,6 +12,7 @@ function login(e) {
     console.log(loginDetails)
     axios.post('http://localhost:3000/user/login',loginDetails).then(response => {
         if(response.status === 200){
+            console.log(response.data.token)
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('userDetails', JSON.stringify(response.data.user))
             window.location.href = "../Expense/index.html" // change the page on successful login
